@@ -9,7 +9,8 @@ if($group === '0') {
 } elseif($group === '1') {
     $testMode = false;
 } else {
-    echo 'Wrong, input, expedted 0 or 1, got ' . $group;
+    echo 'Wrong, input, expedted 0 or 1, got ' . $group . "\n";
+    exit(1);
 }
 
 if(!$testMode) {
