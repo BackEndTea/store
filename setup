@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+$group = readline('What Group are you in? [0 or 1]');
+
+$testMode = false;
+if($group === '0') {
+    $testMode = true;
+} elseif($group === '1') {
+    $testMode = false;
+} else {
+    echo 'Wrong, input, expedted 0 or 1, got ' . $group;
+}
+
+if(!$testMode) {
+    unlink(__DIR__ . '/tests/StoreTest.php');
+    rmdir(__DIR__ . '/tests');
+    @unlink(__DIR__ .'/phpunit');
+} else {
+    echo 'downloading tools';
+
+    file_put_contents('phpunit', fopen('https://phar.phpunit.de/phpunit-7.5.16.phar', 'r'));
+    chmod('phpunit', 0777);
+}
